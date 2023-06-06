@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoList.paginaTab"
+             xmlns:local="clr-namespace:TodoList"
+             Title="paginaTab">
+
+
+    <ScrollView>
+        <Grid RowDefinitions=".10*, .20*, .70*" ColumnDefinitions=".25*, .25*, .25*, .25*">
+           <Grid.Background>
+            <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                <GradientStop Offset="0.10" Color="#cbd0da"/>
+                <GradientStop Offset="0.10" Color="#cbd0da"/>
+                <GradientStop Offset="0.99" Color="#002eff"/>
+              
+            </LinearGradientBrush>
+        </Grid.Background>
+
+            <Frame Grid.Row="0" BackgroundColor="LightBlue" Margin="10,70,10,0" HeightRequest="80" Grid.ColumnSpan="4" HasShadow="True">
+                <Label    FontFamily="roboto" Text="Tareas 🖥️" FontSize="50" HorizontalOptions="Center" TextColor="Black" Grid.ColumnSpan="4"/>
+            </Frame>
+
+            <Entry Grid.Row="1"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Margin="10,40,10,0"
+                   VerticalOptions="Center"
+                   Placeholder="Escribe una tarea"
+                   PlaceholderColor="DarkGray"
+                   x:Name="txtTarea"
+                   BackgroundColor="White"
+                   />
+             <Button Grid.Row="1"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="1"
+                    
+                    Margin="10,40,10,0"
+                    Text="🚀"
+                    FontFamily="Helvetica Neu"
+                    FontAttributes="Bold"
+                    FontSize="33"
+                    VerticalOptions="Center"
+                    x:Name="btnAgregar"
+                   Clicked="btnAgregar_Clicked"
+                    BackgroundColor="Blue"
+                    TextColor="Black"/>
+            <Label Grid.Row="1" VerticalTextAlignment="End" Text="Tus tareas  :" Margin="15,0,0,0" TextColor="Black" FontAttributes="Bold" FontFamily="roboto" FontSize="14"/>
+            <Label Grid.Row="1" VerticalTextAlignment="End" HorizontalTextAlignment="End" Text="0" TextColor="Black" Margin="0,0,80,0" Grid.Column="1" x:Name="Txtcantidad" FontFamily="roboto" FontSize="14"/>
+                <ListView x:Name="listaTareas"
+                          BackgroundColor="Transparent"
+                          SeparatorColor="Silver"
+                          Grid.Row="2"
+                          Grid.ColumnSpan="4"
+                          RowHeight="65"
+                          ItemsSource="{Binding ToDoList}"
+                          >
+                      <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid RowDefinitions=".33*, .33*, .33*" ColumnDefinitions=".8*, .15*, .15*">
+                                    <Label Grid.Row="0"
+                                           Grid.Column="0"
+                                           Grid.ColumnSpan="1"
+                                           Text="{Binding tarea}"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           Margin="20,33,0,0"
+                                           FontFamily="roboto"
+                                           FontAttributes="Bold"
+                                           FontSize="30"
+
+                                           x:Name="lblPrincipal">
+                                        </Label>
+                                            <Button Grid.RowSpan="2"
+                                            Grid.Column="2"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="End"
+                                            WidthRequest="40"
+                                            
+                                            BackgroundColor="#CB3234"
+                                            Margin="0,15,0,0"
+                                            FontSize="17"
+                                            FontFamily="HELVETICA NEU"
+                                            FontAttributes="Bold"
+                                            Text="X"
+                                            x:Name="btnEliminar"
+                                            Clicked="btnEliminar_Clicked"/>
+                                <Button Grid.RowSpan="2"
+                                            Grid.Column="2"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="End"
+                                            WidthRequest="40"
+                                         
+                                            BackgroundColor="Orange"
+                                            Margin="0,15,50,0"
+                                            FontSize="17"
+                                            FontFamily="HELVETICA NEU"
+                                            FontAttributes="Bold"
+                                            TextColor="Black"
+                                            Text="P"
+                                            x:Name="btnPendiente"
+                                            Clicked="btnPendiente_Clicked"/>
+                                    <Button Grid.RowSpan="2"
+                                            Grid.Column="2"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="End"
+                                            WidthRequest="40"
+                                          
+                                            BackgroundColor="Green"
+                                            Margin="0,15,100,0"
+                                            FontFamily="HELVETICA NEU"
+                                            FontAttributes="Bold"
+                                            FontSize="11"
+                                            Text="OK"
+                                            x:Name="btnOk"
+                                            Clicked="btnOk_Clicked"
+                                            />
+                                    </Grid>
+
+                            </ViewCell>
+                            
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+  
+
+        </Grid>
+
+
+     
+    </ScrollView>
+</ContentPage>
